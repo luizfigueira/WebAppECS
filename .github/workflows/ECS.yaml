@@ -12,6 +12,7 @@ env:
   ECS_CLUSTER: TesteECS
   ECS_TASK_DEFINITION: .aws/task-definition.json
   CONTAINER_NAME: "app"
+  
 jobs:
   deploy:
     name: Deploy
@@ -45,7 +46,6 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-<<<<<<< HEAD
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
@@ -62,5 +62,4 @@ jobs:
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
-=======
->>>>>>> 959ec7456daeea8b4a66880f2f21d9c37f07960c
+
